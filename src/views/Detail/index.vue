@@ -27,19 +27,19 @@ const countChange = (count) => {
 }
 //添加购物车
 const addCart = () => {
-    if(skuObj.skuId){
+    if (skuObj.skuId) {
         //规格已经全部被选择 触发action
         cartStore.addCart({
-            id:goods.value.id, //商品id
-            name:goods.value.name, //商品名称
-            picture:goods.value.picture, //商品图片
-            price:goods.value.price, //最新价格
-            count:count.value,//商品数量
-            skuId:skuObj.skuId,//skuId
-            attrsText:skuObj.spescText,//商品规格文本
-            selected:true //商品是否被选中
+            id: goods.value.id, //商品id
+            name: goods.value.name, //商品名称
+            picture: goods.value.mainPictures[0], //商品图片
+            price: goods.value.price, //最新价格
+            count: count.value,//商品数量
+            skuId: skuObj.skuId,//skuId
+            attrsText: skuObj.spescText,//商品规格文本
+            selected: true //商品是否被选中
         })
-    }else{
+    } else {
         //规格没有选择 提示用户
         ElMessage.warning('请选择商品规格')
     }
