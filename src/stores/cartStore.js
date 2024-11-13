@@ -52,6 +52,10 @@ export const useCartStore = defineStore('cart', () => {
         const res = await findNewCartListAPI()
         cartList.value = res.result
     }
+    //清除购物车
+    const clearCart = async () => {
+        cartList.value = []
+    }
     //单选功能 
     const singleCheck = (skuId, selected) => {
         //通过skuId找到要修改的项,然后把它的selected修改位传过来的
@@ -74,7 +78,7 @@ export const useCartStore = defineStore('cart', () => {
     const selectedPrice = computed(() => cartList.value.filter((item) => item.selected).reduce((a, c) => a + c.count * c.price, 0))
     // 是否全选
     const isAll = computed(() => cartList.value.every((item) => item.selected))
-    return { cartList, addCart, delCart, allCount, allPrice, singleCheck, isAll, allCheck, selectedCount, selectedPrice }
+    return { cartList, addCart, delCart, allCount, allPrice, singleCheck, isAll, allCheck, selectedCount, selectedPrice,clearCart }
 }, {
     persist: true
 })
