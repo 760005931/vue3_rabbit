@@ -78,7 +78,7 @@ export const useCartStore = defineStore('cart', () => {
     const selectedPrice = computed(() => cartList.value.filter((item) => item.selected).reduce((a, c) => a + c.count * c.price, 0))
     // 是否全选
     const isAll = computed(() => cartList.value.every((item) => item.selected))
-    return { cartList, addCart, delCart, allCount, allPrice, singleCheck, isAll, allCheck, selectedCount, selectedPrice,clearCart }
+    return { cartList, addCart, delCart, allCount, allPrice, singleCheck, isAll, allCheck, selectedCount, selectedPrice, clearCart, updateNewList }
 }, {
     persist: true
 })

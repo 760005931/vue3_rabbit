@@ -14,16 +14,25 @@ export const insertCartAPI = ({ skuId, count }) => {
 //获取最新购物车列表
 export const findNewCartListAPI = () => {
     return request({
-        url:'/member/cart'
+        url: '/member/cart'
     })
 }
 //删除购物车列表
-export const deleteCartAPI =(ids) => {
+export const deleteCartAPI = (ids) => {
     return request({
-        url:'/member/cart',
-        method:'delete',
-        data:{
+        url: '/member/cart',
+        method: 'delete',
+        data: {
             ids
         }
+    })
+}
+
+//合并购物车
+export const mergeCartAPI = (data) => {
+    return request({
+        url: '/member/cart/merge',
+        method: 'post',
+        data
     })
 }
