@@ -6,13 +6,12 @@ import { useCountDown } from '@/composables/useCountDown';
 const { formatTime, start } = useCountDown()
 const payInfo = ref({})
 const route = useRoute()
-
 //获取订单
 const getPayInfo = async () => {
     const res = await getOrderAPI(route.query.id)
     payInfo.value = res.result
-    //初始倒计时
-    start(payInfo.value.countDown)
+    //初始化倒计时秒数
+    start(res.result.countdown)
 }
 onMounted(() => getPayInfo())
 //跳转支付
